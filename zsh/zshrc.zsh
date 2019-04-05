@@ -96,3 +96,13 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+if [[ -f "${ZSH_BASE}/functions.zsh" ]] ; then
+  source ${ZSH_BASE}/functions.zsh
+fi
+if [[ -f "${ZSH_BASE}/alias.zsh" ]] ; then
+  source ${ZSH_BASE}/alias.zsh
+fi
+if [[ -f "${ZSH_BASE}/env.zsh" ]] ; then
+  source ${ZSH_BASE}/env.zsh
+fi
+
