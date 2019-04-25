@@ -63,7 +63,16 @@ ZSH_CUSTOM=${ZSH_BASE}/custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cp extract fast-syntax-highlighting zsh-autosuggestions)
+plugins=(
+  cp
+  git
+  sublime
+  extract
+  autojump
+  web-search
+  zsh-autosuggestions
+  fast-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
