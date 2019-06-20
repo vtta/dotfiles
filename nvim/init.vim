@@ -5,7 +5,7 @@
 "*****************************************************************************
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
-let g:vim_bootstrap_langs = "c,go,python,scala"
+let g:vim_bootstrap_langs = "c,go,lisp,python,rust"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 
 if !filereadable(vimplug_exists)
@@ -81,19 +81,23 @@ Plug 'ludwig/split-manpage.vim'
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 
 
+" lisp
+"" Lisp Bundle
+Plug 'vim-scripts/slimv.vim'
+
+
 " python
 "" Python Bundle
 Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
 
-" scala
-if has('python')
-    " sbt-vim
-    Plug 'ktvoelker/sbt-vim'
-endif
-" vim-scala
-Plug 'derekwyatt/vim-scala'
+" rust
+" Vim racer
+Plug 'racer-rust/vim-racer'
+
+" Rust.vim
+Plug 'rust-lang/rust.vim'
 
 
 "*****************************************************************************
@@ -508,6 +512,9 @@ augroup END
     \"go": ['golint', 'go vet'], })
 
 
+" lisp
+
+
 " python
 " vim-python
 augroup vimrc-python
@@ -541,7 +548,12 @@ let g:polyglot_disabled = ['python']
 let python_highlight_all = 1
 
 
-" scala
+" rust
+" Vim racer
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 
 
