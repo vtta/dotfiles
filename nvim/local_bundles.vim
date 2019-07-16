@@ -5,4 +5,8 @@ Plug 'connorholyday/vim-snazzy'
 Plug 'dracula/vim', { 'as': 'dracula' }
 " vim-one colorscheme
 Plug 'rakr/vim-one'
+" ayu colorscheme
+Plug 'ayu-theme/ayu-vim'
+" TabNine, the all-language autocompleter
+Plug 'zxqfl/tabnine-vim'
 

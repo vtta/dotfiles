@@ -2,7 +2,7 @@
 if [[ "$(uname -s)" == "Darwin" ]]; then
     set_iterm_profile() {
         val=$(osascript -e "tell application \"System Events\" to tell appearance preferences to set res to dark mode" 2>/dev/null)
-        if [[ $val == "true" ]]; then
+        if [[ $val == "false" ]]; then
             iterm_profile_toggle
         fi
     }
