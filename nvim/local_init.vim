@@ -1,4 +1,4 @@
-let g:python2_host_prog = '/opt/local/bin/python2'
+let g:python_host_prog = '/opt/local/bin/python2'
 let g:python3_host_prog = '/opt/local/bin/python3'
 
 if empty($ITERM_PROFILE)
