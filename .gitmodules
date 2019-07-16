@@ -16,3 +16,6 @@
 [submodule "zsh/custom/plugins/zsh-autosuggestions"]
 	path = zsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "zsh/custom/plugins/rustup"]
+	path = zsh/custom/plugins/rustup
+	url = https://github.com/pkulev/zsh-rustup-completion

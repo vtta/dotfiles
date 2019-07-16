@@ -68,6 +68,7 @@ ZSH_CUSTOM=${ZSH_BASE}/custom
 plugins=(
   cp
   git
+  rustup
   sublime
   extract
   autojump
