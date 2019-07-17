@@ -2,7 +2,7 @@ let g:python_host_prog = '/opt/local/bin/python2'
 let g:python3_host_prog = '/opt/local/bin/python3'
 
 if empty($ITERM_PROFILE)
-    let iterm_profile == "Dark"
+    let iterm_profile = "Dark"
 else
     let iterm_profile = $ITERM_PROFILE
 endif
