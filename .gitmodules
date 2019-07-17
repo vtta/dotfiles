@@ -19,3 +19,6 @@
 [submodule "zsh/custom/plugins/rustup"]
 	path = zsh/custom/plugins/rustup
 	url = https://github.com/pkulev/zsh-rustup-completion
+[submodule "pyenv"]
+	path = pyenv
+	url = https://github.com/pyenv/pyenv

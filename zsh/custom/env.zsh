@@ -6,5 +6,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/Garage/local/bin:$PATH"
 
 # export PATH="/opt/local/libexec/gnubin:$PATH"
-# export MANPATH="/opt/local/share/man:${MANPATH}"
+export MANPATH="/opt/local/share/man:$MANPATH"
 

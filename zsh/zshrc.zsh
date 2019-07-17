@@ -1,11 +1,12 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="/opt/local/bin:/opt/local/sbin:/usr/local/sbin:${PATH}"
-export MANPATH="/opt/local/share/man:${MANPATH}"
+export DOTFILES="$HOME/dotfiles"
 
 # Path to your oh-my-zsh installation.
-export ZSH=${HOME}/dotfiles/zsh/oh-my-zsh
-export ZSH_BASE=${ZSH}/..
+export ZSH=$DOTFILES/zsh/oh-my-zsh
+export ZSH_BASE=$ZSH/..
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -108,6 +109,14 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# completions scripts
 fpath+=${ZSH_BASE}/zfunc
 compinit
+
+# pyenv
+export PYENV_ROOT="${DOTFILES}/pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
