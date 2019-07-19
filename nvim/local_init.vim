@@ -43,5 +43,3 @@ set list
 " set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮,nbsp:⎵
 set listchars=eol:¬,tab:--,trail:⋅,extends:❯,precedes:❮,space:␣
 
-autocmd Filetype c setlocal tabstop=8 noexpandtab
-

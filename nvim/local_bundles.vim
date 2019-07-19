@@ -9,4 +9,6 @@ Plug 'rakr/vim-one'
 Plug 'ayu-theme/ayu-vim'
 " TabNine, the all-language autocompleter
 Plug 'zxqfl/tabnine-vim'
+" Linux kernel coding style
+Plug 'vivien/vim-linux-coding-style'
 
