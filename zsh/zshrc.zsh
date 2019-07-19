@@ -3,6 +3,7 @@ export DOTFILES="$HOME/dotfiles"
 # Path to your oh-my-zsh installation.
 export ZSH=$DOTFILES/zsh/oh-my-zsh
 export ZSH_BASE=$ZSH/..
+export ZSH_CUSTOM=$ZSH_BASE/custom
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -58,16 +59,9 @@ export UPDATE_ZSH_DAYS=7
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=${ZSH_BASE}/custom
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
   cp
+  fzf
   git
   rustup
   sublime
@@ -110,13 +104,26 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # completions scripts
-fpath+=${ZSH_BASE}/zfunc
+fpath+=$ZSH_BASE/zfunc
 compinit
 
+# fzf
+export FZF_BASE="$HOME/.fzf"
+[[ ! "$PATH" == "*$FZF_BASE/bin*" ]] && \
+    export PATH="$FZF_BASE/bin:$PATH"
+[[ $- == *i* ]] && \
+    source "$FZF_BASE/shell/completion.zsh"
+source "$FZF_BASE/shell/key-bindings.zsh"
+# type rg &> /dev/null && \
+#     export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+type fd &> /dev/null && \
+    export FZF_DEFAULT_COMMAND="fd --type file --color=always" && \
+    export FZF_DEFAULT_OPTS="--ansi"
+
 # pyenv
-export PYENV_ROOT="${DOTFILES}/pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+# this stays at the buttom
+export PYENV_ROOT="$DOTFILES/pyenv"
+[[ ! "$PATH" == "*$PYENV_ROOT/bin*" ]] && \
+    export PATH="$PYENV_ROOT/bin:$PATH"
+type pyenv &> /dev/null && eval "$(pyenv init -)"
 
