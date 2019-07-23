@@ -140,5 +140,4 @@ _poetry_d4aa4963fba8820d_complete()
 }
 
 _poetry_d4aa4963fba8820d_complete "$@"
-compdef _poetry_d4aa4963fba8820d_complete ${HOME}/.poetry/bin/poetry
-
+compdef _poetry_d4aa4963fba8820d_complete $HOME/.poetry/bin/poetry

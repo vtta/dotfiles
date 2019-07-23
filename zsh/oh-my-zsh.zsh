@@ -32,7 +32,7 @@ ZSH_THEME="spaceship"
 DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=7
+# export UPDATE_ZSH_DAYS=7
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -60,16 +60,25 @@ export UPDATE_ZSH_DAYS=7
 # HIST_STAMPS="mm/dd/yyyy"
 
 plugins=(
+  # built-in
   cp
   fzf
   git
-  rustup
+  cargo
   sublime
   extract
   autojump
   web-search
+
+  # custom
+  poetry
+  rustup
   zsh-autosuggestions
   fast-syntax-highlighting
+
+  # special
+  # this stays at the buttom
+  pyenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -103,27 +112,9 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# completions scripts
-fpath+=$ZSH_BASE/zfunc
-compinit
-
-# fzf
-export FZF_BASE="$HOME/.fzf"
-[[ ! "$PATH" == "*$FZF_BASE/bin*" ]] && \
-    export PATH="$FZF_BASE/bin:$PATH"
-[[ $- == *i* ]] && \
-    source "$FZF_BASE/shell/completion.zsh"
-source "$FZF_BASE/shell/key-bindings.zsh"
 # type rg &> /dev/null && \
 #     export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 type fd &> /dev/null && \
     export FZF_DEFAULT_COMMAND="fd --type file --color=always" && \
     export FZF_DEFAULT_OPTS="--ansi"
-
-# pyenv
-# this stays at the buttom
-export PYENV_ROOT="$DOTFILES/pyenv"
-[[ ! "$PATH" == "*$PYENV_ROOT/bin*" ]] && \
-    export PATH="$PYENV_ROOT/bin:$PATH"
-type pyenv &> /dev/null && eval "$(pyenv init -)"
 
