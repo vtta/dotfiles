@@ -1,8 +1,11 @@
-let g:python_host_prog = '/opt/local/bin/python2'
-let g:python3_host_prog = '/opt/local/bin/python3'
+set rtp+=/opt/local/share/fzf/vim
+
+" let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
 
 if empty($ITERM_PROFILE)
-    let iterm_profile = "Dark"
+    let iterm_profile = "Light"
+    " let iterm_profile = "Dark"
 else
     let iterm_profile = $ITERM_PROFILE
 endif
@@ -26,7 +29,7 @@ if custom_theme == "one"
     if iterm_profile == "Dark"
         set background=dark
     else
-        set background=ligh
+        set background=light
     endif
 endif
 
