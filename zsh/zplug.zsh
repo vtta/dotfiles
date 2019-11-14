@@ -3,15 +3,15 @@
 DOTFILES="$HOME/dotfiles"
 ZSH_BASE="$DOTFILES/zsh"
 ZSH_CUSTOM="$ZSH_BASE/custom"
-#export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-#export PATH="$HOME/.poetry/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/Library/Python/3.7/bin:$PATH"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-export PATH="/usr/local/opt/flex/bin:$PATH"
-export PATH="/usr/local/opt/bison/bin:$PATH"
+
+PATH="/usr/local/sbin:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/Library/Python/3.7/bin:$PATH"
+PATH="$HOME/go/bin:$PATH"
+PATH="/usr/local/opt/llvm/bin:$PATH"
+PATH="/usr/local/opt/flex/bin:$PATH"
+PATH="/usr/local/opt/bison/bin:$PATH"
+export PATH
 
 export LDFLAGS="-L/usr/local/opt/flex/lib \
                 -L/usr/local/opt/bison/lib \
@@ -23,12 +23,9 @@ export CPPFLAGS="-I/usr/local/opt/flex/include \
 
 export ZPLUG_HOME="$ZSH_BASE/zplug"
 export LANG=en_US.UTF-8
-#[[ -n $SSH_CONNECTION ]] && \
-#    export EDITOR='vim' || export EDITOR='nvim'
 export EDITOR='nvim'
-#type fd &> /dev/null && \
-    export FZF_DEFAULT_COMMAND="fd --type file --color=always" && \
-    export FZF_DEFAULT_OPTS="--ansi"
+export FZF_DEFAULT_COMMAND="fd --type file --color=always"
+export FZF_DEFAULT_OPTS="--ansi"
 
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
 
@@ -49,41 +46,28 @@ alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
-alias -g ......='../../../../../..'
+alias -g .......='../../../../../..'
 alias l='ls -lh'
 alias ll='ls -lah'
-#type gls &> /dev/null && \
-#    alias ls='gls --color=auto' || \
-#    ls -G . &> /dev/null && alias ls='ls -G'
-#type exa &> /dev/null && \
-    alias ls='exa'
-#type assh &> /dev/null && \
-#    alias ssh='assh wrapper ssh'
-function tlc {
-    for i in $@ ; do
-        echo "$i" | tr '[:upper:]' '[:lower:]'
-    done
+alias ls='exa'
+alias cfa='fd -a -e c -e cc -e cpp -e cxx -e h -e hh -e hpp -e hxx -x clang-format -style=file -i {}'
+alias y2bdl='youtube-dl -f bestvideo+bestaudio --write-sub --write-auto-sub --sub-lang en,zh-Hans --embed-subs'
+
+tlc() {
+    for i in $@ ; do echo "$i" | tr '[:upper:]' '[:lower:]' ; done
 }
-function uba {
+uba() {
     brew update
     brew upgrade
     brew cask outdated --greedy --verbose | rg -v latest | cut -d " " -f 1 | xargs brew cask upgrade
     brew cleanup
 }
-function brewdeps {
+brewdeps() {
     brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/" | sed "s/://"
 }
-function brewrdeps {
+brewrdeps() {
     brew list -1 | while read cask; do echo -ne "\x1B[1;34m $cask \x1B[0m"; brew uses $cask --installed | awk '{printf(" %s ", $0)}'; echo ""; done
 }
-#function upa {
-#    read -s "p?Password:"
-#    echo $p | sudo -S port selfupdate
-#    echo $p | sudo -S port -uc upgrade outdated
-#}
-#alias ua='sudo sh -c "port selfupdate && port -uc upgrade outdated &" && uba &'
-alias cfa='fd -a -e c -e h -e cc -e cpp -e cxx -e hpp -e hxx -x clang-format -style=file -i {}'
-alias y2bdl='youtube-dl -f bestvideo+bestaudio --write-sub --write-auto-sub --sub-lang en,zh-Hans --embed-subs'
 
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
@@ -108,7 +92,6 @@ zplug "plugins/fzf", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "plugins/cargo", from:oh-my-zsh
-#zplug "plugins/pyenv", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
 zplug "plugins/thefuck", from:oh-my-zsh
 zplug "plugins/autojump", from:oh-my-zsh
@@ -130,12 +113,11 @@ zplug load
 
 eval "$(starship init zsh)"
 
-PATH="/Users/vtta/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/vtta/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/vtta/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/vtta/perl5\""; export PERL_MB_OPT;
-ERL_MM_OPT="INSTALL_BASE=/Users/vtta/perl5"; export PERL_MM_OPT;
-
+export PATH="$HOME/perl5/bin${PATH:+:${PATH}}"
+export PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+export PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+export PERL_MB_OPT="--install_base \"$HOME/perl5\""
+export ERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
 
 # Override auto-title when static titles are desired ($ title My new title)
 title() { export TITLE_OVERRIDDEN=1; echo -en "\e]0;$*\a"}
@@ -163,4 +145,3 @@ tabtitle_preexec() {
 }
 [[ -z $preexec_functions ]] && preexec_functions=()
 preexec_functions=($preexec_functions tabtitle_preexec)
-
