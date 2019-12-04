@@ -51,7 +51,16 @@ alias l='ls -lh'
 alias ll='ls -lah'
 alias ls='exa'
 alias cfa='fd -a -e c -e cc -e cpp -e cxx -e h -e hh -e hpp -e hxx -x clang-format -style=file -i {}'
-alias y2bdl='youtube-dl -f bestvideo+bestaudio --write-sub --write-auto-sub --sub-lang en,zh-Hans --embed-subs'
+y2bdl() {
+    youtube-dl -f "bestvideo[ext=mp4]+bestaudio[acodec=opus]/bestvideo[ext=mp4]+bestaudio[ext=m4a]" \
+        --external-downloader aria2c --external-downloader-args "-c -x16" \
+        --retries infinite --fragment-retries infinite \
+        --write-sub --write-auto-sub --sub-lang en,zh-Hans --sub-format vtt/srt \
+        --recode-video mp4 --embed-subs \
+        --postprocessor-args "-vcodec copy -b:a 256k" \
+        --proxy "$http_proxy" "$@"
+        # --postprocessor-args "-vcodec copy -b:a 256k -c:v libx265 -preset medium -tag:v hvc1"
+}
 
 tlc() {
     for i in $@ ; do echo "$i" | tr '[:upper:]' '[:lower:]' ; done

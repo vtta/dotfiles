@@ -17,6 +17,6 @@ set_iterm_profile() {
 
 if [[ ! -n $SSH_CONNECTION ]] && \
     [[ "$(uname -s)" == "Darwin" ]]; then
-    set_iterm_profile
+    # set_iterm_profile
 fi
 
