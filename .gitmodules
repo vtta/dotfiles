@@ -1,0 +1,6 @@
+[submodule "zsh/zgen"]
+	path = zsh/zgen
+	url = https://github.com/tarjoilija/zgen.git
+[submodule "third_party/zsh-quickstart-kit"]
+	path = third_party/zsh-quickstart-kit
+	url = https://github.com/unixorn/zsh-quickstart-kit.git
