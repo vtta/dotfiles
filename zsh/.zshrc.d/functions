@@ -6,7 +6,7 @@ y2bdl() {
         --recode-video mp4 --embed-subs \
         --postprocessor-args "-vcodec copy -b:a 256k" \
         --proxy "$http_proxy" \
-        --keep "$@"
+        --keep-video "$@"
         # --postprocessor-args "-vcodec copy -b:a 256k -c:v libx265 -preset medium -tag:v hvc1"
 }
 

@@ -2,8 +2,8 @@
 	path = third_party/zsh-quickstart-kit
 	url = https://github.com/unixorn/zsh-quickstart-kit.git
 [submodule "tmux/.tmux/plugins/tpm"]
-	path = tmux/tmux/plugins/tpm
+	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 [submodule "tmux/.tmux/plugins/tmux-snazzy"]
-	path = tmux/tmux/plugins/tmux-snazzy
+	path = tmux/.tmux/plugins/tmux-snazzy
 	url = https://github.com/jaketrent/tmux-snazzy
