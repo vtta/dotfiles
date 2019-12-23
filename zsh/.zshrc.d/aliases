@@ -1,0 +1,3 @@
+# exa
+alias ls='exa'
+alias cfa='fd -a -e c -e cc -e cpp -e cxx -e h -e hh -e hpp -e hxx -x clang-format -style=file -i {}'

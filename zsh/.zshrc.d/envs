@@ -1,0 +1,15 @@
+export EDITOR='nvim'
+export FZF_DEFAULT_COMMAND="fd --type file --color=always"
+export FZF_DEFAULT_OPTS="--ansi"
+
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+
+HTTP_PROXY_SERVER=http://127.0.0.1:8888
+SOCKS_PROXY_SERVER=socks5h://127.0.0.1:8889
+export http_proxy=$HTTP_PROXY_SERVER
+export https_proxy=$HTTP_PROXY_SERVER
+export all_proxy=$SOCKS_PROXY_SERVER
+export HTTP_PROXY=$http_proxy
+export HTTPS_PROXY=$http_proxy
+export ALL_PROXY=$all_proxy
+#git config --global http.proxy $all_proxy
