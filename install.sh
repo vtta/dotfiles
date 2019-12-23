@@ -4,5 +4,8 @@
 # cd dotfiles
 # git submodule update --init --recursive
 
-stow --verbose --restow --target=${HOME}/.config nvim
-stow --verbose --restow --target=${HOME} zsh
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+
+stow --verbose --restow --target=${HOME} zsh tmux
+stow --verbose --restow --target=${XDG_CONFIG_HOME} nvim
+# zsh ${XDG_CONFIG_HOME}/tmux/plugins/tpm/bin/install_plugins

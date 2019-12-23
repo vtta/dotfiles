@@ -1,11 +1,12 @@
 y2bdl() {
     youtube-dl -f "bestvideo[ext=mp4]+bestaudio[acodec=opus]/bestvideo[ext=mp4]+bestaudio[ext=m4a]" \
-        --external-downloader aria2c --external-downloader-args "-c -x16" \
+        --external-downloader aria2c --external-downloader-args "-x 16 -s 16 -k 1M" \
         --retries infinite --fragment-retries infinite \
         --write-sub --write-auto-sub --sub-lang en,zh-Hans --sub-format vtt/srt \
         --recode-video mp4 --embed-subs \
         --postprocessor-args "-vcodec copy -b:a 256k" \
-        --proxy "$http_proxy" "$@"
+        --proxy "$http_proxy" \
+        --keep "$@"
         # --postprocessor-args "-vcodec copy -b:a 256k -c:v libx265 -preset medium -tag:v hvc1"
 }
 

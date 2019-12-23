@@ -91,6 +91,7 @@ if [[ ! -f ~/.zsh-quickstart-no-omz ]]; then
   zgen oh-my-zsh plugins/fd
   zgen oh-my-zsh plugins/fzf
   zgen oh-my-zsh plugins/thefuck
+  zgen oh-my-zsh plugins/tmuxinatorz
   if [ $(uname -a | grep -ci Darwin) = 1 ]; then
     # Load OSX-specific plugins
     zgen oh-my-zsh plugins/brew
