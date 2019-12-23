@@ -210,10 +210,8 @@ if [ -d ~/.zsh-completions ]; then
   done
 fi
 
-echo
 echo "Current SSH Keys:"
 ssh-add -l
-echo
 
 # Load zmv
 if [[ ! -f ~/.zsh-quickstart-no-zmv ]]; then
