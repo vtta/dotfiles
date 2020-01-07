@@ -4,6 +4,9 @@
 PATH="$PATH:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:/bin:/usr/bin"
 # Conditional PATH additions
 PATH_CANDIDATE=(
+    /usr/local/opt/flex/bin
+    /usr/local/opt/bison/bin
+    /usr/local/opt/llvm/bin
     /Applications/Xcode.app/Contents/Developer/usr/bin
     /opt/local/bin
     /opt/local/sbin
