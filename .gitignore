@@ -3,3 +3,6 @@ nvim/nvim/**
 !nvim/nvim/*.vim
 
 vscode/extensions
+
+ssh/.ssh/**
+!ssh/.ssh/config
