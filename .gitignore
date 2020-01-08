@@ -2,4 +2,4 @@
 nvim/nvim/**
 !nvim/nvim/*.vim
 
-
+vscode/extensions
