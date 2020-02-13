@@ -1,0 +1,9 @@
+[submodule "module/ohmyzsh-custom/plugins/fast-syntax-highlighting"]
+	path = module/ohmyzsh-custom/plugins/fast-syntax-highlighting
+	url = https://github.com/zdharma/fast-syntax-highlighting
+[submodule "module/ohmyzsh-custom/plugins/pure"]
+	path = module/ohmyzsh-custom/plugins/pure
+	url = https://github.com/sindresorhus/pure
+[submodule "module/ohmyzsh"]
+	path = module/ohmyzsh
+	url = http://github.com/robbyrussell/oh-my-zsh
