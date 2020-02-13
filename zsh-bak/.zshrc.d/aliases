@@ -1,3 +1,5 @@
 # exa
 alias ls='exa'
 alias cfa='fd -a -e c -e cc -e cpp -e cxx -e h -e hh -e hpp -e hxx -x clang-format -style=file -i {}'
+alias dl='aria2c -x 16 -s 16 -k 1M'
+alias jupyter='/usr/local/anaconda3/bin/jupyter_mac.command'

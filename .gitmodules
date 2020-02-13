@@ -10,3 +10,6 @@
 [submodule "third_party/dircolors-solarized"]
 	path = third_party/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized
+[submodule "zsh/ohmyzsh"]
+	path = zsh/ohmyzsh
+	url = https://github.com/ohmyzsh/ohmyzsh
