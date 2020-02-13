@@ -29,7 +29,7 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/git
   zgen oh-my-zsh plugins/osx
   zgen oh-my-zsh plugins/brew
-  zgen oh-my-zsh plugins/sudo
+  # zgen oh-my-zsh plugins/sudo
   zgen oh-my-zsh plugins/extract
   zgen oh-my-zsh plugins/gitignore
   zgen oh-my-zsh plugins/rand-quote
@@ -38,8 +38,6 @@ if ! zgen saved; then
   zgen load zsh-users/zsh-completions src
   zgen load zsh-users/zsh-autosuggestions
   zmodload zsh/terminfo
-  bindkey "$terminfo[kcuu1]" history-substring-search-up
-  bindkey "$terminfo[kcud1]" history-substring-search-down
   GENCOMPL_FPATH=$HOME/.zsh/complete
   zgen load RobSis/zsh-completion-generator
   zgen load zdharma/fast-syntax-highlighting
@@ -75,6 +73,13 @@ export EDITOR='nvim'
 export FZF_DEFAULT_COMMAND="fd --type file --color=always"
 export FZF_DEFAULT_OPTS="--ansi"
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
+#ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=("${(@)ZSH_AUTOSUGGEST_ACCEPT_WIDGETS:#forward-char}")
+#ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+=(forward-char)
+bindkey '^[[F' autosuggest-accept
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
 
 ################
 ####    fns
