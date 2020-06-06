@@ -1,11 +1,5 @@
 PATH="$PATH:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:/bin:/usr/bin"
 PATH_CANDIDATE=(
-  /usr/local/opt/flex/bin
-  /usr/local/opt/bison/bin
-  /usr/local/opt/llvm/bin
-  /opt/local/bin
-  /opt/local/sbin
-  /usr/local/share/npm/bin
   ~/.cargo/bin
   ~/perl5/bin
   ~/bin
@@ -23,11 +17,11 @@ typeset -aU path
 source "${HOME}/.zgen/zgen.zsh"
 # if the init script doesn't exist
 if ! zgen saved; then
+  zgen load mafredri/zsh-async
   zgen oh-my-zsh
   zgen oh-my-zsh plugins/z
   zgen oh-my-zsh plugins/cp
   zgen oh-my-zsh plugins/git
-  zgen oh-my-zsh plugins/osx
   zgen oh-my-zsh plugins/brew
   # zgen oh-my-zsh plugins/sudo
   zgen oh-my-zsh plugins/extract
@@ -61,18 +55,39 @@ alias cfa='fd -a -e c -e cc -e cpp -e cxx -e h -e hh -e hpp -e hxx -x clang-form
 ################
 ####    envs
 ################
-HTTP_PROXY_SERVER=http://127.0.0.1:7890
-SOCKS_PROXY_SERVER=socks5://127.0.0.1:7891
-export http_proxy=$HTTP_PROXY_SERVER
-export https_proxy=$HTTP_PROXY_SERVER
-export all_proxy=$SOCKS_PROXY_SERVER
-export HTTP_PROXY=$http_proxy
-export HTTPS_PROXY=$http_proxy
-export ALL_PROXY=$all_proxy
-export EDITOR='nvim'
-export FZF_DEFAULT_COMMAND="fd --type file --color=always"
-export FZF_DEFAULT_OPTS="--ansi"
-export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+
+  HTTP_PROXY_SERVER=http://127.0.0.1:7890
+  SOCKS_PROXY_SERVER=socks5://127.0.0.1:7891
+  export http_proxy=$HTTP_PROXY_SERVER
+  export https_proxy=$HTTP_PROXY_SERVER
+  export all_proxy=$SOCKS_PROXY_SERVER
+  export HTTP_PROXY=$http_proxy
+  export HTTPS_PROXY=$http_proxy
+  export ALL_PROXY=$all_proxy
+  export EDITOR='nvim'
+  export FZF_DEFAULT_COMMAND="fd --type file --color=always"
+  export FZF_DEFAULT_OPTS="--ansi"
+  export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+
+  uba() {
+    brew update
+    brew upgrade
+    brew cask outdated --greedy --verbose | rg -v latest | cut -d " " -f 1 | xargs brew cask upgrade
+    brew cleanup
+  }
+  brewdeps() {
+    brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/" | sed "s/://"
+  }
+  brewrdeps() {
+    brew list -1 | while read cask; do
+      echo -ne "\x1B[1;34m $cask \x1B[0m"
+      brew uses $cask --installed | awk '{printf(" %s ", $0)}'
+      echo ""
+    done
+  }
+
+fi
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 #ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=("${(@)ZSH_AUTOSUGGEST_ACCEPT_WIDGETS:#forward-char}")
@@ -94,23 +109,6 @@ y2bdl() {
     --proxy "$http_proxy" \
     --keep-video "$@"
   # --postprocessor-args "-vcodec copy -b:a 256k -c:v libx265 -preset medium -tag:v hvc1"
-}
-
-uba() {
-  brew update
-  brew upgrade
-  brew cask outdated --greedy --verbose | rg -v latest | cut -d " " -f 1 | xargs brew cask upgrade
-  brew cleanup
-}
-brewdeps() {
-  brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/" | sed "s/://"
-}
-brewrdeps() {
-  brew list -1 | while read cask; do
-    echo -ne "\x1B[1;34m $cask \x1B[0m"
-    brew uses $cask --installed | awk '{printf(" %s ", $0)}'
-    echo ""
-  done
 }
 
 #quote | cowsay
